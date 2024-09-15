@@ -74,11 +74,11 @@ int16_t WiFiScanClass::scanNetworks(bool async, bool show_hidden, bool passive, 
     config.show_hidden = show_hidden;
     if(passive){
         config.scan_type = WIFI_SCAN_TYPE_PASSIVE;
-        config.scan_time.passive = max_ms_per_chan;
+        config.scan_time.passive = 0;
     } else {
         config.scan_type = WIFI_SCAN_TYPE_ACTIVE;
         config.scan_time.active.min = 100;
-        config.scan_time.active.max = max_ms_per_chan;
+        config.scan_time.active.max = 0;
     }
     if(esp_wifi_scan_start(&config, false) == ESP_OK) {
         _scanStarted = millis();
